@@ -18,7 +18,7 @@ export function SiderbarDrawerContextProvider({
 
   useEffect(() => {
     disclosure.onClose();
-  }, [disclosure, router.asPath]);
+  }, [router.asPath]);
 
   return (
     <SiderBarDrawerContext.Provider value={disclosure}>
