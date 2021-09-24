@@ -5,7 +5,6 @@ export function Pagination() {
     <Stack direction="row" mt="8" justify="space-between" align="center">
       <Box>
         <strong>0</strong> - <strong>10</strong> de <strong>100</strong>
-
       </Box>
       <Stack direction="row" spacing="2">
         <Button

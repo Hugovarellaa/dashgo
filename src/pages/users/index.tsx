@@ -37,7 +37,7 @@ export default function UserList() {
               size="sm"
               fontSize="sm"
               colorScheme="pink"
-              leftIcon={<Icon as={RiAddLine} fontSize='20'/>}
+              leftIcon={<Icon as={RiAddLine} fontSize="20" />}
             >
               Criar novo usuário
             </Button>
@@ -73,7 +73,7 @@ export default function UserList() {
                     size="sm"
                     fontSize="sm"
                     colorScheme="purple"
-                    leftIcon={<Icon as={RiPencilLine} fontSize='16' />}
+                    leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
                   >
                     Editar
                   </Button>
