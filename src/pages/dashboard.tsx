@@ -57,7 +57,7 @@ const options = {
       opacityto: 0.3,
     }
   }
-};
+}as const;
 
 const series = [
   { name: "series1", data: [10, 120, 9, 22, 99, 55, 64, 44, 47] },
