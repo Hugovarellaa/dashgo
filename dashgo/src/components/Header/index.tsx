@@ -25,16 +25,14 @@ export function Header() {
       align="center"
     >
       {!isWideVersion && (
-        <IconButton 
+        <IconButton
           aria-label="Open navigation"
-          icon={<Icon as={RiMenuLine}/>}
+          icon={<Icon as={RiMenuLine} />}
           fontSize="24"
           variant="unstyled"
           onClick={onOpen}
           mr="2"
-        > 
-
-        </IconButton>
+        ></IconButton>
       )}
       <Logo />
       {isWideVersion && <SearchBox />}

@@ -12,7 +12,7 @@ import { useSiderBarDrawer } from "../../contexts/SiderBarDrawerContext";
 import { SiderBarNav } from "./SiderBarNav";
 
 export function SiderBar() {
-  const {isOpen, onClose} = useSiderBarDrawer()
+  const { isOpen, onClose } = useSiderBarDrawer();
 
   const isDraweSideBar = useBreakpointValue({
     base: true,
@@ -22,16 +22,16 @@ export function SiderBar() {
   if (isDraweSideBar) {
     return (
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
-      <DrawerOverlay>
-        <DrawerContent bg="gray.800" p="4">
-          <DrawerCloseButton mt="6" />
-          <DrawerHeader>Navergação</DrawerHeader>
-          <DrawerBody>
-            <SiderBarNav />
-          </DrawerBody>
-        </DrawerContent>
-      </DrawerOverlay>
-    </Drawer>
+        <DrawerOverlay>
+          <DrawerContent bg="gray.800" p="4">
+            <DrawerCloseButton mt="6" />
+            <DrawerHeader>Navergação</DrawerHeader>
+            <DrawerBody>
+              <SiderBarNav />
+            </DrawerBody>
+          </DrawerContent>
+        </DrawerOverlay>
+      </Drawer>
     );
   }
   return (

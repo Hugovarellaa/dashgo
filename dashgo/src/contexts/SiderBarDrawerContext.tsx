@@ -13,13 +13,13 @@ export function SiderBarDrawerProvider({
   children,
 }: SiderBarDrawerContextProps) {
   const disclourse = useDisclosure();
-  const { events } = useRouter()
+  const { events } = useRouter();
 
   useEffect(() => {
-    events.on('routeChangeComplete', () => {
+    events.on("routeChangeComplete", () => {
       disclourse.onClose();
-    })
-  }, [events, disclourse])
+    });
+  }, [events, disclourse]);
 
   return (
     <SiderBarDrawerContext.Provider value={disclourse}>
