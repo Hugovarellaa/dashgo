@@ -15,15 +15,14 @@ export function ActiveLink({
   const { asPath } = useRouter();
   let isActive = false;
 
-  if (shouldMatchExactHref && 
-    (asPath === rest.href || 
-      asPath === rest.as)) {
+  if (shouldMatchExactHref && (asPath === rest.href || asPath === rest.as)) {
     isActive = true;
   }
-  
-  if (!shouldMatchExactHref &&
-    (asPath.startsWith(String(rest.href)) || 
-    asPath.startsWith(String(rest.as)))) {
+
+  if (
+    !shouldMatchExactHref &&
+    (asPath.startsWith(String(rest.href)) || asPath.startsWith(String(rest.as)))
+  ) {
     isActive = true;
   }
 
