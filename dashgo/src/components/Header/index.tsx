@@ -1,5 +1,13 @@
-import { Flex, Icon, Input as ChakraInput, Text } from "@chakra-ui/react";
-import { RiSearchLine } from "react-icons/ri";
+import {
+  Avatar,
+  Box,
+  Flex,
+  HStack,
+  Icon,
+  Input as ChakraInput,
+  Text,
+} from "@chakra-ui/react";
+import { RiNotificationLine, RiSearchLine, RiUserLine } from "react-icons/ri";
 
 export function Header() {
   return (
@@ -42,6 +50,35 @@ export function Header() {
           }}
         />
         <Icon as={RiSearchLine} fontSize="20" />
+      </Flex>
+
+      <Flex align="center" ml="auto">
+        <HStack
+          spacing="8"
+          mx="8"
+          pr="8"
+          py="1"
+          color="gray.300"
+          borderRightWidth={1}
+          borderColor="gray.700"
+        >
+          <Icon as={RiNotificationLine} fontSize="20" />
+          <Icon as={RiUserLine} fontSize="20" />
+        </HStack>
+
+        <Flex align="center">
+          <Box mr="4" textAlign="right">
+            <Text>Hugo Alves</Text>
+            <Text color="gray.300" fontSize="small">
+              hugovarellaa@gmail.com
+            </Text>
+          </Box>
+          <Avatar
+            size="md"
+            name="Hugo Alves"
+            src="https://github.com/Hugovarellaa.png"
+          />
+        </Flex>
       </Flex>
     </Flex>
   );
