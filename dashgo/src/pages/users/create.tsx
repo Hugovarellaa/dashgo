@@ -20,13 +20,18 @@ export default function CreateUser() {
       <Flex width="100%" my="6" maxWidth={1480} mx="auto" px="6">
         <Siderbar />
 
-        <Box flex="1" borderRadius={8} backgroundColor="gray.800" padding="8">
+        <Box
+          flex="1"
+          borderRadius={8}
+          backgroundColor="gray.800"
+          padding={["6", "8"]}
+        >
           <Heading size="lg" fontWeight="normal">
             Criar usuário
           </Heading>
           <Divider my="6" borderColor="gray.700"></Divider>
           <HStack spacing="8">
-            <SimpleGrid minChildWidth="240" spacing="8" width="100%">
+            <SimpleGrid minChildWidth="240" spacing={["6", "8"]} width="100%">
               <Input name="name" label="Nome Completo" />
               <Input type="email" name="email" label="E-mail" />
             </SimpleGrid>
