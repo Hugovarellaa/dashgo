@@ -25,7 +25,7 @@ export function Header() {
 
       <Flex align="center" ml="auto">
         <NotificationNav />
-        <Profile />
+        <Profile showProfileData={isWiderVersion} />
       </Flex>
     </Flex>
   );
