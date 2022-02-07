@@ -21,7 +21,7 @@ export function Header() {
     >
       <Logo />
 
-      <SearchBox />
+      {isWiderVersion && <SearchBox />}
 
       <Flex align="center" ml="auto">
         <NotificationNav />
