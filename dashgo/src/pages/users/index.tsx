@@ -24,27 +24,34 @@ import { Siderbar } from "../../components/Siderbar";
 import { useQuery } from "react-query";
 
 export default function UserList() {
-  const { data, isLoading, error } = useQuery("users", async () => {
-    const response = await fetch("http://localhost:3000/api/users");
-    const data = await response.json();
+  const { data, isLoading, error } = useQuery(
+    "users",
+    async () => {
+      const response = await fetch("http://localhost:3000/api/users");
+      const data = await response.json();
 
-    const users = data.users.map((user) => {
-      return {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        createAt: new Date(user.createAt).toLocaleDateString("pt-br", {
-          day: "2-digit",
-          month: "long",
-          year: "numeric",
-        }),
-      };
-    });
+      const users = data.users.map((user) => {
+        return {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          createAt: new Date(user.createAt).toLocaleDateString("pt-br", {
+            day: "2-digit",
+            month: "long",
+            year: "numeric",
+          }),
+        };
+      });
 
-    console.log(users);
+      console.log(users);
 
-    return users;
-  });
+      return users;
+    },
+    {
+      // Tempo que os dados serao considerado como fresh
+      staleTime: 1000 * 5, // 5seconds
+    }
+  );
 
   const isWiderVersion = useBreakpointValue({
     base: false,
