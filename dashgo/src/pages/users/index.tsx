@@ -27,7 +27,23 @@ export default function UserList() {
   const { data, isLoading, error } = useQuery("users", async () => {
     const response = await fetch("http://localhost:3000/api/users");
     const data = await response.json();
-    return data;
+
+    const users = data.users.map((user) => {
+      return {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        createAt: new Date(user.createAt).toLocaleDateString("pt-br", {
+          day: "2-digit",
+          month: "long",
+          year: "numeric",
+        }),
+      };
+    });
+
+    console.log(users);
+
+    return users;
   });
 
   const isWiderVersion = useBreakpointValue({
@@ -85,122 +101,39 @@ export default function UserList() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  <Tr>
-                    <Td px={["4", "4", "6"]}>
-                      <Checkbox colorScheme="pink" />
-                    </Td>
-                    <Td>
-                      <Box>
-                        <Text fontWeight="bold">Hugo Alves Varella</Text>
-                        <Text fontSize="sm" color="gray.300">
-                          hugovarella@gmail.com
-                        </Text>
-                      </Box>
-                    </Td>
-                    {isWiderVersion && <Td>04 de Abril. 2021</Td>}
-                    {isWiderVersion && (
-                      <Td>
-                        <Button
-                          as="a"
-                          size="sm"
-                          fontSize="sm"
-                          colorScheme="purple"
-                          leftIcon={<Icon as={RiPencilLine} fontSize="18" />}
-                        >
-                          Editar
-                        </Button>
-                      </Td>
-                    )}
-                  </Tr>
-
-                  {/* Copia 1 */}
-                  <Tr>
-                    <Td px={["4", "4", "6"]}>
-                      <Checkbox colorScheme="pink" />
-                    </Td>
-                    <Td>
-                      <Box>
-                        <Text fontWeight="bold">Hugo Alves Varella</Text>
-                        <Text fontSize="sm" color="gray.300">
-                          hugovarella@gmail.com
-                        </Text>
-                      </Box>
-                    </Td>
-                    {isWiderVersion && <Td>04 de Abril. 2021</Td>}
-                    {isWiderVersion && (
-                      <Td>
-                        <Button
-                          as="a"
-                          size="sm"
-                          fontSize="sm"
-                          colorScheme="purple"
-                          leftIcon={<Icon as={RiPencilLine} fontSize="18" />}
-                        >
-                          Editar
-                        </Button>
-                      </Td>
-                    )}
-                  </Tr>
-                  {/* Copia 2 */}
-
-                  <Tr>
-                    <Td px={["4", "4", "6"]}>
-                      <Checkbox colorScheme="pink" />
-                    </Td>
-                    <Td>
-                      <Box>
-                        <Text fontWeight="bold">Hugo Alves Varella</Text>
-                        <Text fontSize="sm" color="gray.300">
-                          hugovarella@gmail.com
-                        </Text>
-                      </Box>
-                    </Td>
-                    {isWiderVersion && <Td>04 de Abril. 2021</Td>}
-                    {isWiderVersion && (
-                      <Td>
-                        <Button
-                          as="a"
-                          size="sm"
-                          fontSize="sm"
-                          colorScheme="purple"
-                          leftIcon={<Icon as={RiPencilLine} fontSize="18" />}
-                        >
-                          Editar
-                        </Button>
-                      </Td>
-                    )}
-                  </Tr>
-                  {/* Copia 3 */}
-
-                  <Tr>
-                    <Td px={["4", "4", "6"]}>
-                      <Checkbox colorScheme="pink" />
-                    </Td>
-                    <Td>
-                      <Box>
-                        <Text fontWeight="bold">Hugo Alves Varella</Text>
-                        <Text fontSize="sm" color="gray.300">
-                          hugovarella@gmail.com
-                        </Text>
-                      </Box>
-                    </Td>
-
-                    {isWiderVersion && <Td>04 de Abril. 2021</Td>}
-
-                    {isWiderVersion && (
-                      <Td>
-                        <Button
-                          as="a"
-                          size="sm"
-                          fontSize="sm"
-                          colorScheme="purple"
-                          leftIcon={<Icon as={RiPencilLine} fontSize="18" />}
-                        >
-                          Editar
-                        </Button>
-                      </Td>
-                    )}
-                  </Tr>
+                  {data.map((user) => {
+                    return (
+                      <Tr key={user.id}>
+                        <Td px={["4", "4", "6"]}>
+                          <Checkbox colorScheme="pink" />
+                        </Td>
+                        <Td>
+                          <Box>
+                            <Text fontWeight="bold">{user.name}</Text>
+                            <Text fontSize="sm" color="gray.300">
+                              {user.email}
+                            </Text>
+                          </Box>
+                        </Td>
+                        {isWiderVersion && <Td>{user.createAt}</Td>}
+                        {isWiderVersion && (
+                          <Td>
+                            <Button
+                              as="a"
+                              size="sm"
+                              fontSize="sm"
+                              colorScheme="purple"
+                              leftIcon={
+                                <Icon as={RiPencilLine} fontSize="18" />
+                              }
+                            >
+                              Editar
+                            </Button>
+                          </Td>
+                        )}
+                      </Tr>
+                    );
+                  })}
                 </Tbody>
               </Table>
               <Pagination />
