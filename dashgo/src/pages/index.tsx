@@ -9,7 +9,7 @@ type SignInFormData = {
   password: string;
 };
 
-const signInFormSchema = yup.object({
+const signInFormSchema = yup.object().shape({
   email: yup.string().required("E-mail Obrigatorio").email("E-mail invalido"),
   password: yup.string().required("Senha Invalida"),
 });
