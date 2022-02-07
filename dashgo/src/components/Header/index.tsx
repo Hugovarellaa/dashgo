@@ -1,10 +1,14 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, useBreakpointValue } from "@chakra-ui/react";
 import { Logo } from "./Logo";
 import { NotificationNav } from "./NotificationNav";
 import { Profile } from "./Profile";
 import { SearchBox } from "./SearchBox";
 
 export function Header() {
+  const isWiderVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
   return (
     <Flex
       width="100%"
