@@ -9,6 +9,7 @@ export function Header() {
     base: false,
     lg: true,
   });
+
   return (
     <Flex
       width="100%"
