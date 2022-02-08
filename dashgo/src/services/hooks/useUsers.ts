@@ -9,8 +9,19 @@ type User = {
   createAt: string;
 };
 
-export async function getUsers(): Promise<User[]> {
-  const { data } = await api.get("http://localhost:3000/api/users");
+type GetUsersResponse = {
+  totalCount: number;
+  users: User[];
+};
+
+export async function getUsers(page: number): Promise<GetUsersResponse> {
+  const { data, headers } = await api.get("users", {
+    params: {
+      page,
+    },
+  });
+
+  const totalCount = Number(headers["x-total-count"]);
 
   const users = data.users.map((user) => {
     return {
@@ -25,13 +36,14 @@ export async function getUsers(): Promise<User[]> {
     };
   });
 
-  console.log(users);
-
-  return users;
+  return {
+    users,
+    totalCount,
+  };
 }
 
-export function userUsers() {
-  return useQuery("users", getUsers, {
+export function userUsers(page: number) {
+  return useQuery(["users", page], () => getUsers(page), {
     // Tempo que os dados serao considerado como fresh
     staleTime: 1000 * 5, // 5seconds
   });
