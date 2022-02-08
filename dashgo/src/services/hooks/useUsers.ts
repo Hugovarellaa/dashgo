@@ -44,7 +44,6 @@ export async function getUsers(page: number): Promise<GetUsersResponse> {
 
 export function userUsers(page: number) {
   return useQuery(["users", page], () => getUsers(page), {
-    // Tempo que os dados serao considerado como fresh
-    staleTime: 1000 * 5, // 5seconds
+    staleTime: 1000 * 60 * 10, // 10 minutes, Tempo que os dados serao considerado como fresh
   });
 }
