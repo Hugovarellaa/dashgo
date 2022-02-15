@@ -70,8 +70,9 @@ export function Header() {
             <Icon as={RiNotificationLine} />
             <Icon as={RiUserAddLine} />
           </Stack>
+
           {/* Profile */}
-          <Flex align="center">
+          <Flex align="center" pr="8">
             <Box mr="4" textAlign="right">
               <Text>Hugo Alves Varella</Text>
               <Text color="gray.300" fontSize="sm">
