@@ -20,6 +20,22 @@ export function Header() {
             .
           </Text>
         </Text>
+
+        {/* Searchbox */}
+
+        <Flex
+          as="label"
+          flex="1"
+          py="4"
+          px="8"
+          ml="6"
+          maxWidth={400}
+          alignSelf="center"
+          color="gray.200"
+          position="relative"
+          background="gray.800"
+          borderRadius="full"
+        ></Flex>
       </Flex>
     </>
   );
