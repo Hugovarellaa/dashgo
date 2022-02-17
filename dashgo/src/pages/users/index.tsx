@@ -12,6 +12,7 @@ import {
   Th,
   Thead,
   Tr,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
 import { Header } from "../../components/Header";
@@ -19,6 +20,10 @@ import { Pagination } from "../../components/Pagination";
 import { Sidebar } from "../../components/Sidebar";
 
 export default function UserList() {
+  const isWiderVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
   return (
     <>
       <Box>
@@ -51,8 +56,8 @@ export default function UserList() {
                     <Checkbox colorScheme="pink" />
                   </Th>
                   <Th>Usuário</Th>
-                  <Th>Data de cadastro</Th>
-                  <Th width="8"></Th>
+                  {isWiderVersion && <Th>Data de cadastro</Th>}
+                  {isWiderVersion && <Th width="8"></Th>}
                 </Tr>
               </Thead>
               <Tbody>
@@ -68,18 +73,20 @@ export default function UserList() {
                       </Text>
                     </Box>
                   </Td>
-                  <Td>04 de Abril, 2021</Td>
-                  <Td>
-                    <Button
-                      as="a"
-                      size="sm"
-                      fontSize="sm"
-                      colorScheme="purple"
-                      leftIcon={<Icon as={RiPencilLine} fontSize="17" />}
-                    >
-                      Criar novo
-                    </Button>
-                  </Td>
+                  {isWiderVersion && <Td>04 de Abril, 2021</Td>}
+                  {isWiderVersion && (
+                    <Td>
+                      <Button
+                        as="a"
+                        size="sm"
+                        fontSize="sm"
+                        colorScheme="purple"
+                        leftIcon={<Icon as={RiPencilLine} fontSize="17" />}
+                      >
+                        Editar
+                      </Button>
+                    </Td>
+                  )}
                 </Tr>
 
                 <Tr>
@@ -94,18 +101,20 @@ export default function UserList() {
                       </Text>
                     </Box>
                   </Td>
-                  <Td>04 de Abril, 2021</Td>
-                  <Td>
-                    <Button
-                      as="a"
-                      size="sm"
-                      fontSize="sm"
-                      colorScheme="purple"
-                      leftIcon={<Icon as={RiPencilLine} fontSize="17" />}
-                    >
-                      Criar novo
-                    </Button>
-                  </Td>
+                  {isWiderVersion && <Td>04 de Abril, 2021</Td>}
+                  {isWiderVersion && (
+                    <Td>
+                      <Button
+                        as="a"
+                        size="sm"
+                        fontSize="sm"
+                        colorScheme="purple"
+                        leftIcon={<Icon as={RiPencilLine} fontSize="17" />}
+                      >
+                        Editar
+                      </Button>
+                    </Td>
+                  )}
                 </Tr>
 
                 <Tr>
@@ -120,18 +129,20 @@ export default function UserList() {
                       </Text>
                     </Box>
                   </Td>
-                  <Td>04 de Abril, 2021</Td>
-                  <Td>
-                    <Button
-                      as="a"
-                      size="sm"
-                      fontSize="sm"
-                      colorScheme="purple"
-                      leftIcon={<Icon as={RiPencilLine} fontSize="17" />}
-                    >
-                      Criar novo
-                    </Button>
-                  </Td>
+                  {isWiderVersion && <Td>04 de Abril, 2021</Td>}
+                  {isWiderVersion && (
+                    <Td>
+                      <Button
+                        as="a"
+                        size="sm"
+                        fontSize="sm"
+                        colorScheme="purple"
+                        leftIcon={<Icon as={RiPencilLine} fontSize="17" />}
+                      >
+                        Editar
+                      </Button>
+                    </Td>
+                  )}
                 </Tr>
 
                 <Tr>
@@ -146,18 +157,20 @@ export default function UserList() {
                       </Text>
                     </Box>
                   </Td>
-                  <Td>04 de Abril, 2021</Td>
-                  <Td>
-                    <Button
-                      as="a"
-                      size="sm"
-                      fontSize="sm"
-                      colorScheme="purple"
-                      leftIcon={<Icon as={RiPencilLine} fontSize="17" />}
-                    >
-                      Criar novo
-                    </Button>
-                  </Td>
+                  {isWiderVersion && <Td>04 de Abril, 2021</Td>}
+                  {isWiderVersion && (
+                    <Td>
+                      <Button
+                        as="a"
+                        size="sm"
+                        fontSize="sm"
+                        colorScheme="purple"
+                        leftIcon={<Icon as={RiPencilLine} fontSize="17" />}
+                      >
+                        Editar
+                      </Button>
+                    </Td>
+                  )}
                 </Tr>
               </Tbody>
             </Table>
