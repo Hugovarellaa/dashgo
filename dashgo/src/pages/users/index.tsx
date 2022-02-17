@@ -80,6 +80,84 @@ export default function UserList() {
                     </Button>
                   </Td>
                 </Tr>
+
+                <Tr>
+                  <Td>
+                    <Checkbox colorScheme="pink" />
+                  </Td>
+                  <Td>
+                    <Box>
+                      <Text fontWeight="bold">Hugo Alves Varella</Text>
+                      <Text fontSize="sm" color="gray.300">
+                        hugovarellaa@gmail.com
+                      </Text>
+                    </Box>
+                  </Td>
+                  <Td>04 de Abril, 2021</Td>
+                  <Td>
+                    <Button
+                      as="a"
+                      size="sm"
+                      fontSize="sm"
+                      colorScheme="purple"
+                      leftIcon={<Icon as={RiPencilLine} fontSize="17" />}
+                    >
+                      Criar novo
+                    </Button>
+                  </Td>
+                </Tr>
+
+                <Tr>
+                  <Td>
+                    <Checkbox colorScheme="pink" />
+                  </Td>
+                  <Td>
+                    <Box>
+                      <Text fontWeight="bold">Hugo Alves Varella</Text>
+                      <Text fontSize="sm" color="gray.300">
+                        hugovarellaa@gmail.com
+                      </Text>
+                    </Box>
+                  </Td>
+                  <Td>04 de Abril, 2021</Td>
+                  <Td>
+                    <Button
+                      as="a"
+                      size="sm"
+                      fontSize="sm"
+                      colorScheme="purple"
+                      leftIcon={<Icon as={RiPencilLine} fontSize="17" />}
+                    >
+                      Criar novo
+                    </Button>
+                  </Td>
+                </Tr>
+
+                <Tr>
+                  <Td>
+                    <Checkbox colorScheme="pink" />
+                  </Td>
+                  <Td>
+                    <Box>
+                      <Text fontWeight="bold">Hugo Alves Varella</Text>
+                      <Text fontSize="sm" color="gray.300">
+                        hugovarellaa@gmail.com
+                      </Text>
+                    </Box>
+                  </Td>
+                  <Td>04 de Abril, 2021</Td>
+                  <Td>
+                    <Button
+                      as="a"
+                      size="sm"
+                      fontSize="sm"
+                      colorScheme="purple"
+                      leftIcon={<Icon as={RiPencilLine} fontSize="17" />}
+                    >
+                      Criar novo
+                    </Button>
+                  </Td>
+                </Tr>
               </Tbody>
             </Table>
           </Box>
