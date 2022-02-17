@@ -5,7 +5,9 @@ import {
   RiSearchLine,
   RiUserAddLine,
 } from "react-icons/ri";
+import { Notification } from "./Notification";
 import { Profile } from "./Profile";
+import { SearchBox } from "./SearchBox";
 
 export function Header() {
   return (
@@ -28,51 +30,8 @@ export function Header() {
           </Text>
         </Text>
 
-        {/* SearchBox */}
-        <Flex
-          as="label"
-          flex="1"
-          py="4"
-          px="8"
-          ml="6"
-          maxWidth={400}
-          alignSelf="center"
-          color="gray.200"
-          position="relative"
-          background="gray.800"
-          borderRadius="full"
-        >
-          <Input
-            color="gray.50"
-            variant="unstyled"
-            px="4"
-            mr="4"
-            placeholder="Buscar na plataforma"
-            _placeholder={{
-              color: "gray.400",
-            }}
-          />
-          <Icon as={RiSearchLine} fontSize="20" />
-        </Flex>
-
-        {/* Notification */}
-        <Flex alignItems="center" ml="auto">
-          <Stack
-            spacing="8"
-            direction="row"
-            mx="8"
-            pr="8"
-            py="1"
-            color="gray.300"
-            borderRightWidth={1}
-            borderColor="gray.700"
-          >
-            <Icon as={RiNotificationLine} fontSize="20" />
-            <Icon as={RiUserAddLine} fontSize="20" />
-          </Stack>
-        </Flex>
-
-        {/* Profile */}
+        <SearchBox />
+        <Notification />
         <Profile />
       </Flex>
     </>
