@@ -1,9 +1,11 @@
 import { Avatar, Box, Flex, Icon, Input, Stack, Text } from "@chakra-ui/react";
+import { profile } from "console";
 import {
   RiNotificationLine,
   RiSearchLine,
   RiUserAddLine,
 } from "react-icons/ri";
+import { Profile } from "./Profile";
 
 export function Header() {
   return (
@@ -71,19 +73,7 @@ export function Header() {
         </Flex>
 
         {/* Profile */}
-        <Flex alignItems="center">
-          <Box mr="6" textAlign="right">
-            <Text>Hugo Alves Varella</Text>
-            <Text color="gray.300" fontSize="small">
-              hugovarellaa@gmail.com
-            </Text>
-          </Box>
-          <Avatar
-            size="md"
-            name="Hugo Varella"
-            src="https://github.com/Hugovarellaa.png"
-          />
-        </Flex>
+        <Profile />
       </Flex>
     </>
   );
