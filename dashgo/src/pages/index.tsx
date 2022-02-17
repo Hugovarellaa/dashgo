@@ -3,7 +3,7 @@ import {
   Flex,
   FormControl,
   FormLabel,
-  Input,
+  Input as ChakraInput,
   Stack,
 } from "@chakra-ui/react";
 
@@ -28,7 +28,7 @@ export default function Home() {
           <Stack spacing="6">
             <FormControl>
               <FormLabel htmlFor="email">E-mail</FormLabel>
-              <Input
+              <ChakraInput
                 id="email"
                 name="email"
                 type="email"
@@ -42,8 +42,7 @@ export default function Home() {
             </FormControl>
             <FormControl>
               <FormLabel htmlFor="password">Senha</FormLabel>
-
-              <Input
+              <ChakraInput
                 id="password"
                 name="password"
                 type="password"
