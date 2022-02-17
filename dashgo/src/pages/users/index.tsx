@@ -32,7 +32,12 @@ export default function UserList() {
         <Flex width="100%" my="6" maxWidth={1480} mx="auto" px="10">
           <Sidebar />
 
-          <Box flex="1" borderRadius={8} background="gray.800" p="8">
+          <Box
+            flex="1"
+            borderRadius={8}
+            background="gray.800"
+            p={["4", "6", "8"]}
+          >
             <Flex mb="8" justify="space-between" align="center">
               <Heading fontSize="lg" fontWeight="normal">
                 Usuários
@@ -43,6 +48,7 @@ export default function UserList() {
                 size="sm"
                 fontSize="sm"
                 colorScheme="pink"
+                mr="4"
                 leftIcon={<Icon as={RiAddLine} fontSize="20" />}
               >
                 Criar novo
@@ -62,7 +68,7 @@ export default function UserList() {
               </Thead>
               <Tbody>
                 <Tr>
-                  <Td>
+                  <Td px={["4", "4", "6"]}>
                     <Checkbox colorScheme="pink" />
                   </Td>
                   <Td>
