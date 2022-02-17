@@ -18,8 +18,8 @@ export function Header() {
         align="center"
       >
         <Logo />
-
         <SearchBox />
+
         <Flex alignItems="center" ml="auto">
           <Notification />
           <Profile />
