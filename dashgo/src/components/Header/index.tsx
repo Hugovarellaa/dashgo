@@ -20,8 +20,10 @@ export function Header() {
         <Logo />
 
         <SearchBox />
-        <Notification />
-        <Profile />
+        <Flex alignItems="center" ml="auto">
+          <Notification />
+          <Profile />
+        </Flex>
       </Flex>
     </>
   );
