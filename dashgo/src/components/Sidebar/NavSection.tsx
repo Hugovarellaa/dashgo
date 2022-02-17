@@ -1,6 +1,5 @@
-import { Box, Icon, Link, Stack, Text } from "@chakra-ui/react";
+import { Box, Stack, Text } from "@chakra-ui/react";
 import { ReactNode } from "react";
-import { RiContactsLine, RiDashboardLine } from "react-icons/ri";
 
 interface NavSectionProps {
   name: string;
