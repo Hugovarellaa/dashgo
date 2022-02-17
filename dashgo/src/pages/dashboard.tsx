@@ -1,7 +1,9 @@
 import { Box, Flex, SimpleGrid, Text } from "@chakra-ui/react";
+import dynamic from "next/dynamic";
 import { Header } from "../components/Header";
 import { Sidebar } from "../components/Sidebar";
-import Chart from "react-apexcharts";
+
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const options = {};
 
