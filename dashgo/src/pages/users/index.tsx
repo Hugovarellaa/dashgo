@@ -10,7 +10,8 @@ export default function UserList() {
 
         <Flex width="100%" my="6" maxWidth={1480} mx="auto" px="10">
           <Sidebar />
-          asdfasd
+
+          <Box flex="1" borderRadius={8} background="gray.800" p="8"></Box>
         </Flex>
       </Box>
     </>
