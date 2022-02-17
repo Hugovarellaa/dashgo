@@ -13,7 +13,10 @@ export function NavSection({ name, children }: NavSectionProps) {
       <Text fontWeight="bold" color="gray.400" fontSize="small">
         {name}
       </Text>
-      {children}
+
+      <Stack spacing="4" mt="8" align="stretch">
+        {children}
+      </Stack>
     </Box>
   );
 }
