@@ -4,7 +4,7 @@ import { PaginationItem } from "./PaginationItem";
 export function Pagination() {
   return (
     <Stack
-      flexDirection="row"
+      flexDirection={["column", "column", "row"]}
       spacing="6"
       mt="8"
       justify="space-between"
