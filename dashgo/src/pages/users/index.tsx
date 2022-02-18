@@ -24,26 +24,32 @@ import { useQuery } from "react-query";
 
 export default function UserList() {
   //hook do react-query
-  const { data, isLoading, error } = useQuery("users", async () => {
-    const response = await fetch("http://localhost:3000/api/users");
-    const data = await response.json();
+  const { data, isLoading, error } = useQuery(
+    "users",
+    async () => {
+      const response = await fetch("http://localhost:3000/api/users");
+      const data = await response.json();
 
-    //formatação dos dados
-    const users = data.users.map((user) => {
-      return {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        createAt: new Date(user.createAt).toLocaleDateString("pt-BR", {
-          day: "2-digit",
-          month: "long",
-          year: "numeric",
-        }),
-      };
-    });
+      //formatação dos dados
+      const users = data.users.map((user) => {
+        return {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          createAt: new Date(user.createAt).toLocaleDateString("pt-BR", {
+            day: "2-digit",
+            month: "long",
+            year: "numeric",
+          }),
+        };
+      });
 
-    return users;
-  });
+      return users;
+    },
+    {
+      staleTime: 1000 * 5,
+    }
+  );
 
   //hook do chakra
   const isWiderVersion = useBreakpointValue({
