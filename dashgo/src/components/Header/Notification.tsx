@@ -1,4 +1,4 @@
-import { Flex, Icon, Stack } from "@chakra-ui/react";
+import { Icon, Stack } from "@chakra-ui/react";
 import { RiNotificationLine, RiUserAddLine } from "react-icons/ri";
 
 export function Notification() {
