@@ -4,6 +4,7 @@ import { theme } from "../styles/theme";
 import { SidebarProvide } from "../context/SidebarDrawerContext";
 import { makeServer } from "../services/mirage-js";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 if (process.env.NODE_ENV === "development") {
   makeServer();
@@ -15,6 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools />
         <SidebarProvide>
           <Component {...pageProps} />
         </SidebarProvide>

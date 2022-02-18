@@ -16,20 +16,36 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import { useEffect } from "react";
-import { RiAddLine, RiPencilLine } from "react-icons/ri";
+import { RiAddLine } from "react-icons/ri";
 import { Header } from "../../components/Header";
 import { Pagination } from "../../components/Pagination";
 import { Sidebar } from "../../components/Sidebar";
 import { useQuery } from "react-query";
 
 export default function UserList() {
+  //hook do react-query
   const { data, isLoading, error } = useQuery("users", async () => {
     const response = await fetch("http://localhost:3000/api/users");
     const data = await response.json();
-    return data;
+
+    //formatação dos dados
+    const users = data.users.map((user) => {
+      return {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        createAt: new Date(user.createAt).toLocaleDateString("pt-BR", {
+          day: "2-digit",
+          month: "long",
+          year: "numeric",
+        }),
+      };
+    });
+
+    return users;
   });
 
+  //hook do chakra
   const isWiderVersion = useBreakpointValue({
     base: false,
     lg: true,
@@ -85,121 +101,27 @@ export default function UserList() {
                       </Th>
                       <Th>Usuário</Th>
                       {isWiderVersion && <Th>Data de cadastro</Th>}
-                      {isWiderVersion && <Th width="8"></Th>}
                     </Tr>
                   </Thead>
                   <Tbody>
-                    <Tr>
-                      <Td px={["4", "4", "6"]}>
-                        <Checkbox colorScheme="pink" />
-                      </Td>
-                      <Td>
-                        <Box>
-                          <Text fontWeight="bold">Hugo Alves Varella</Text>
-                          <Text fontSize="sm" color="gray.300">
-                            hugovarellaa@gmail.com
-                          </Text>
-                        </Box>
-                      </Td>
-                      {isWiderVersion && <Td>04 de Abril, 2021</Td>}
-                      {isWiderVersion && (
-                        <Td>
-                          <Button
-                            as="a"
-                            size="sm"
-                            fontSize="sm"
-                            colorScheme="purple"
-                            leftIcon={<Icon as={RiPencilLine} fontSize="17" />}
-                          >
-                            Editar
-                          </Button>
-                        </Td>
-                      )}
-                    </Tr>
-
-                    <Tr>
-                      <Td px={["4", "4", "6"]}>
-                        <Checkbox colorScheme="pink" />
-                      </Td>
-                      <Td>
-                        <Box>
-                          <Text fontWeight="bold">Hugo Alves Varella</Text>
-                          <Text fontSize="sm" color="gray.300">
-                            hugovarellaa@gmail.com
-                          </Text>
-                        </Box>
-                      </Td>
-                      {isWiderVersion && <Td>04 de Abril, 2021</Td>}
-                      {isWiderVersion && (
-                        <Td>
-                          <Button
-                            as="a"
-                            size="sm"
-                            fontSize="sm"
-                            colorScheme="purple"
-                            leftIcon={<Icon as={RiPencilLine} fontSize="17" />}
-                          >
-                            Editar
-                          </Button>
-                        </Td>
-                      )}
-                    </Tr>
-
-                    <Tr>
-                      <Td px={["4", "4", "6"]}>
-                        <Checkbox colorScheme="pink" />
-                      </Td>
-                      <Td>
-                        <Box>
-                          <Text fontWeight="bold">Hugo Alves Varella</Text>
-                          <Text fontSize="sm" color="gray.300">
-                            hugovarellaa@gmail.com
-                          </Text>
-                        </Box>
-                      </Td>
-                      {isWiderVersion && <Td>04 de Abril, 2021</Td>}
-                      {isWiderVersion && (
-                        <Td>
-                          <Button
-                            as="a"
-                            size="sm"
-                            fontSize="sm"
-                            colorScheme="purple"
-                            leftIcon={<Icon as={RiPencilLine} fontSize="17" />}
-                          >
-                            Editar
-                          </Button>
-                        </Td>
-                      )}
-                    </Tr>
-
-                    <Tr>
-                      <Td px={["4", "4", "6"]}>
-                        <Checkbox colorScheme="pink" />
-                      </Td>
-                      <Td>
-                        <Box>
-                          <Text fontWeight="bold">Hugo Alves Varella</Text>
-                          <Text fontSize="sm" color="gray.300">
-                            hugovarellaa@gmail.com
-                          </Text>
-                        </Box>
-                      </Td>
-                      {isWiderVersion && <Td>04 de Abril, 2021</Td>}
-                      {isWiderVersion && (
-                        <Td>
-                          <Button
-                            as="a"
-                            size="sm"
-                            fontSize="sm"
-                            colorScheme="purple"
-                            leftIcon={<Icon as={RiPencilLine} fontSize="17" />}
-                          >
-                            Editar
-                          </Button>
-                        </Td>
-                      )}
-                    </Tr>
+                    {data.map((user) => {
+                      return (
+                        <Tr key={user.id}>
+                          <Td px={["4", "4", "6"]}>
+                            <Checkbox colorScheme="pink" />
+                          </Td>
+                          <Td>
+                            <Box>
+                              <Text fontWeight="bold">{user.name}</Text>
+                              <Text fontSize="sm" color="gray.300">
+                                {user.email}
+                              </Text>
+                            </Box>
+                          </Td>
+                          {isWiderVersion && <Td>{user.createAt}</Td>}
+                        </Tr>
+                      );
+                    })}
                   </Tbody>
                 </Table>
                 <Pagination />
