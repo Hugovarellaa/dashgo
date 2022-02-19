@@ -60,7 +60,10 @@ const series = [{ name: "series1", data: [10, 100, 23, 150, 11, 109, 37, 72] }];
 
 export default function Dashboard() {
   useEffect(() => {
-    axios.get("/me").then((response) => console.log(response));
+    axios
+      .get("/me")
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
   }, []);
   return (
     <Flex direction="column" height="100vh">
