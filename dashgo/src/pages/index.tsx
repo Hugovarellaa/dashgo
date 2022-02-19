@@ -24,7 +24,7 @@ export default function SignIn() {
 
   const handleSignIn: SubmitHandler<IFormValues> = async (values, event) => {
     event.preventDefault();
-    signIn(values);
+    await signIn(values);
   };
 
   return (

@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useContext } from "react";
+import { axios } from "../services/axios/axios";
 
 type signInCredentials = {
   email: string;
@@ -19,8 +20,16 @@ export const AuthContext = createContext({} as AuthContextData);
 export function AuthProvider({ children }: AuthProviderProps) {
   const isAuthenticated = false;
 
-  async function signIn(credentials: signInCredentials) {
-    console.log(credentials);
+  async function signIn({ email, password }: signInCredentials) {
+    try {
+      const response = await axios.post("sessions", {
+        email,
+        password,
+      });
+      console.log(response.data);
+    } catch (err) {
+      console.log(err.message);
+    }
   }
   return (
     <>
