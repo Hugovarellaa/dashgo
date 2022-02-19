@@ -35,7 +35,7 @@ export function makeServer() {
       }),
     },
     seeds(server) {
-      server.createList("user", 100);
+      server.createList("user", 7);
     },
     routes() {
       this.namespace = "api";

@@ -14,9 +14,11 @@ import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { api } from "../../services/axios/api";
+import { queryClient } from "../../services/react-query/queryClient";
+import { useRouter } from "next/router";
 
 const createUseFormSchema = yup.object().shape({
   name: yup.string().required("Nome obrigatório"),
@@ -38,15 +40,25 @@ interface IFormValues {
 }
 
 export default function CreateUser() {
-  const createUser = useMutation(async (user: IFormValues) => {
-    const response = await api.post("users", {
-      user: {
-        ...user,
-        create_at: new Date(),
+  const router = useRouter();
+
+  const createUser = useMutation(
+    async (user: IFormValues) => {
+      const response = await api.post("users", {
+        user: {
+          ...user,
+          create_at: new Date(),
+        },
+      });
+      return response.data.user;
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("users");
+        router.push("/users");
       },
-    });
-    return response.data.user;
-  });
+    }
+  );
 
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(createUseFormSchema),
