@@ -1,7 +1,15 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { axios } from "../services/axios/axios";
 import Router from "next/router";
-import { setCookie } from "nookies";
+import { setCookie, parseCookies } from "nookies";
+
+const cookies = parseCookies();
 
 type IUser = {
   email: string;
@@ -30,6 +38,16 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<IUser>();
   const isAuthenticated = !!user;
 
+  useEffect(() => {
+    const { "nextauth.token": token } = parseCookies();
+    if (token) {
+      axios.get("/me").then((response) => {
+        const { email, permissions, roles } = response.data;
+        setUser({ email, permissions, roles });
+      });
+    }
+  }, []);
+
   async function signIn({ email, password }: signInCredentials) {
     try {
       const response = await axios.post("sessions", {
@@ -53,6 +71,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
         permissions,
         roles,
       });
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
       Router.push("/dashboard");
     } catch (err) {
       console.log(err.message);

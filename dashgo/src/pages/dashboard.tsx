@@ -1,7 +1,9 @@
 import { Box, Flex, SimpleGrid, Text, theme } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
+import { useEffect } from "react";
 import { Header } from "../components/Header";
 import { Sidebar } from "../components/Sidebar";
+import { axios } from "../services/axios/axios";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -57,6 +59,9 @@ const options = {
 const series = [{ name: "series1", data: [10, 100, 23, 150, 11, 109, 37, 72] }];
 
 export default function Dashboard() {
+  useEffect(() => {
+    axios.get("/me").then((response) => console.log(response));
+  }, []);
   return (
     <Flex direction="column" height="100vh">
       <Header />
