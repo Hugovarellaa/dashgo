@@ -3,6 +3,12 @@ import { Input } from "../components/Form/Input";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useAuth } from "../context/AuthContext";
+
+interface IFormValues {
+  email: string;
+  password: string;
+}
 
 const signInFormSchema = yup.object().shape({
   email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
@@ -10,14 +16,15 @@ const signInFormSchema = yup.object().shape({
 });
 
 export default function SignIn() {
+  const { signIn } = useAuth();
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(signInFormSchema),
   });
   const { errors } = formState;
 
-  const handleSignIn: SubmitHandler<FieldValues> = async (values) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log(values);
+  const handleSignIn: SubmitHandler<IFormValues> = async (values, event) => {
+    event.preventDefault();
+    signIn(values);
   };
 
   return (
