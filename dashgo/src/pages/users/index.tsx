@@ -20,35 +20,11 @@ import { RiAddLine } from "react-icons/ri";
 import { Header } from "../../components/Header";
 import { Pagination } from "../../components/Pagination";
 import { Sidebar } from "../../components/Sidebar";
-import { useQuery } from "react-query";
-import { api } from "../../services/axios/api";
+import { useUsers } from "../../services/hooks/useUsers";
 
 export default function UserList() {
   //hook do react-query
-  const { data, isLoading, error, isFetching } = useQuery(
-    "users",
-    async () => {
-      const { data } = await api.get("http://localhost:3000/api/users");
-      //formatação dos dados
-      const users = data.users.map((user) => {
-        return {
-          id: user.id,
-          name: user.name,
-          email: user.email,
-          createAt: new Date(user.createAt).toLocaleDateString("pt-BR", {
-            day: "2-digit",
-            month: "long",
-            year: "numeric",
-          }),
-        };
-      });
-
-      return users;
-    },
-    {
-      staleTime: 1000 * 5,
-    }
-  );
+  const { data, isLoading, error, isFetching } = useUsers();
 
   //hook do chakra
   const isWiderVersion = useBreakpointValue({
