@@ -32,6 +32,7 @@
     "eslint": "8.9.0",
     "eslint-config-next": "12.0.10",
     "faker": "5.5.3",
+    "nookies": "^2.5.2",
     "typescript": "4.5.5"
   }
 }
