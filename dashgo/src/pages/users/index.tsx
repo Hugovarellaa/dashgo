@@ -27,7 +27,7 @@ export default function UserList() {
   const [page, setPage] = useState(1);
 
   //hook do react-query
-  const { data, isLoading, error, isFetching } = useUsers();
+  const { data, isLoading, error, isFetching } = useUsers(page);
 
   //hook do chakra
   const isWiderVersion = useBreakpointValue({
@@ -91,7 +91,7 @@ export default function UserList() {
                     </Tr>
                   </Thead>
                   <Tbody>
-                    {data.map((user) => {
+                    {data.users.map((user) => {
                       return (
                         <Tr key={user.id}>
                           <Td px={["4", "4", "6"]}>
@@ -112,7 +112,7 @@ export default function UserList() {
                   </Tbody>
                 </Table>
                 <Pagination
-                  totalCountOfRegisters={200}
+                  totalCountOfRegisters={data.totalCount}
                   currentPage={page}
                   onPageChange={setPage}
                 />
