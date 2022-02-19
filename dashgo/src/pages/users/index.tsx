@@ -21,15 +21,14 @@ import { Header } from "../../components/Header";
 import { Pagination } from "../../components/Pagination";
 import { Sidebar } from "../../components/Sidebar";
 import { useQuery } from "react-query";
+import { api } from "../../services/axios/api";
 
 export default function UserList() {
   //hook do react-query
   const { data, isLoading, error, isFetching } = useQuery(
     "users",
     async () => {
-      const response = await fetch("http://localhost:3000/api/users");
-      const data = await response.json();
-
+      const { data } = await api.get("http://localhost:3000/api/users");
       //formatação dos dados
       const users = data.users.map((user) => {
         return {
