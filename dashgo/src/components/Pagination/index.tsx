@@ -54,6 +54,10 @@ export function Pagination({
         <strong>0</strong> - <strong> 10 </strong> de <strong>100</strong>
       </Box>
       <HStack spacing="2">
+        {/* Primeira pagina */}
+
+        {currentPage > 1 + siblingsCount && <PaginationItem number={1} />}
+
         {/* anteriores */}
         {previousPages.length > 0 &&
           previousPages.map((page) => {
@@ -68,6 +72,11 @@ export function Pagination({
           nextPages.map((page) => {
             return <PaginationItem key={page} number={page} />;
           })}
+
+        {/* Ultima pagina */}
+        {currentPage + siblingsCount < lastPage && (
+          <PaginationItem number={lastPage} />
+        )}
       </HStack>
     </Stack>
   );
