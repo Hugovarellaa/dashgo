@@ -39,10 +39,16 @@ export default function UserList() {
   });
 
   async function handlePrefetchUser(id: string) {
-    await queryClient.prefetchQuery(["user", id], async () => {
-      const response = await api.get(`users/${id}`);
-      return response.data;
-    });
+    await queryClient.prefetchQuery(
+      ["user", id],
+      async () => {
+        const response = await api.get(`users/${id}`);
+        return response.data;
+      },
+      {
+        staleTime: 1000 * 5,
+      }
+    );
   }
 
   return (
