@@ -22,9 +22,9 @@ import { RiAddLine } from "react-icons/ri";
 import { Header } from "../../components/Header";
 import { Pagination } from "../../components/Pagination";
 import { Sidebar } from "../../components/Sidebar";
-import { api } from "../../services/axios/api";
+import { api } from "../../services/api";
 import { useUsers } from "../../services/hooks/useUsers";
-import { queryClient } from "../../services/react-query/queryClient";
+import { queryClient } from "../../services/queryClient";
 
 export default function UserList() {
   const [page, setPage] = useState(1);

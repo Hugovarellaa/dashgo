@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useMutation } from "react-query";
-import { api } from "../axios/api";
-import { queryClient } from "../react-query/queryClient";
+import { api } from "../api";
+import { queryClient } from "../queryClient";
 
 interface IFormValues {
   name: string;
