@@ -54,19 +54,6 @@ $ yarn dev
 
 ```
 
-&nbsp;
-
-<!--
-### 🔗 Link para o projeto online
-
-[Dashgo](https://dashgo-gbdev13.vercel.app/) -->
-
-&nbsp;
-
-## 📝 Licença
-
-Este projeto está licenciado sob a Licença MIT. Veja o arquivo de [LICENÇA](https://github.com/GBDev13/dashgo/blob/main/LICENSE) para detalhes.
-
 ---
 
 <p align="center">Feito com 💙 por  Hugo Alves Varella</p>
