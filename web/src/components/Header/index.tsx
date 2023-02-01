@@ -25,18 +25,18 @@ export function Header() {
       paddingX="6"
       alignItems="center"
     >
-      <Logo />
-
       {!isWideVersion && (
         <IconButton
           aria-label="Open Navigation"
           icon={<Icon as={RiMenuLine} />}
-          fontSize="24"
+          fontSize="34"
           variant="unstyled"
           onClick={disclosure.onOpen}
           marginRight="2"
         />
       )}
+
+      <Logo />
 
       {isWideVersion && <Search />}
 
