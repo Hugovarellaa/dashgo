@@ -37,6 +37,7 @@ type User = {
 }
 
 export default function UsersList() {
+  // Fetch para API na Rota Users
   const { data, isLoading, error } = useQuery('users', async () => {
     const response = await fetch('http://localhost:3000/api/users')
     const data = await response.json()
