@@ -1,10 +1,11 @@
-import { Box, Icon, Link, Stack, Text } from '@chakra-ui/react'
+import { Box, Stack } from '@chakra-ui/react'
 import {
   RiContactsLine,
   RiDashboardLine,
   RiGitMergeLine,
   RiInputMethodLine,
 } from 'react-icons/ri'
+import { NavLink } from './NavLink'
 import { NavSection } from './NavSection'
 
 export function Sidebar() {
@@ -12,35 +13,13 @@ export function Sidebar() {
     <Box as="aside" width="64" marginRight="8">
       <Stack spacing="12" align="flex-start">
         <NavSection title="GERAL">
-          <Link display="flex" alignItems="center">
-            <Icon as={RiDashboardLine} fontSize={20} />
-            <Text marginLeft="4" fontWeight="medium">
-              Dashboard
-            </Text>
-          </Link>
-
-          <Link display="flex" alignItems="center">
-            <Icon as={RiContactsLine} fontSize={20} />
-            <Text marginLeft="4" fontWeight="medium">
-              Usuários
-            </Text>
-          </Link>
+          <NavLink name="Dashboard" icon={RiDashboardLine} />
+          <NavLink name="Usuários" icon={RiContactsLine} />
         </NavSection>
 
         <NavSection title="AUTOMAÇÃO">
-          <Link display="flex" alignItems="center">
-            <Icon as={RiInputMethodLine} fontSize={20} />
-            <Text marginLeft="4" fontWeight="medium">
-              Formulário
-            </Text>
-          </Link>
-
-          <Link display="flex" alignItems="center">
-            <Icon as={RiGitMergeLine} fontSize={20} />
-            <Text marginLeft="4" fontWeight="medium">
-              Automação
-            </Text>
-          </Link>
+          <NavLink name="Formulário" icon={RiInputMethodLine} />
+          <NavLink name="Automação" icon={RiGitMergeLine} />
         </NavSection>
       </Stack>
     </Box>
