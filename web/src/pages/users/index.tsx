@@ -38,26 +38,33 @@ type User = {
 
 export default function UsersList() {
   // Fetch para API na Rota Users
-  const { data, isLoading, error } = useQuery('users', async () => {
-    const response = await fetch('http://localhost:3000/api/users')
-    const data = await response.json()
+  const { data, isLoading, error } = useQuery(
+    'users',
+    async () => {
+      const response = await fetch('http://localhost:3000/api/users')
+      const data = await response.json()
 
-    // Formatação de dados
-    const users = data.users.map((user: UserDataFetch) => {
-      return {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        created_at: new Date(user.createdAt).toLocaleDateString('pt-BR', {
-          day: '2-digit',
-          month: 'long',
-          year: 'numeric',
-        }),
-      }
-    })
+      // Formatação de dados
+      const users = data.users.map((user: UserDataFetch) => {
+        return {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          created_at: new Date(user.createdAt).toLocaleDateString('pt-BR', {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric',
+          }),
+        }
+      })
 
-    return users
-  })
+      return users
+    },
+    {
+      // Tempo que a lib nao faz um Re-fetch
+      staleTime: 1000 * 5, // 5 seg
+    },
+  )
 
   const isWideVersion = useBreakpointValue({
     base: false,
