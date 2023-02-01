@@ -22,11 +22,40 @@ import Link from 'next/link'
 import { RiAddLine, RiPencilLine } from 'react-icons/ri'
 import { useQuery } from 'react-query'
 
+interface UserDataFetch {
+  id: string
+  name: string
+  email: string
+  createdAt: string
+}
+
+type User = {
+  id: string
+  name: string
+  email: string
+  created_at: string
+}
+
 export default function UsersList() {
   const { data, isLoading, error } = useQuery('users', async () => {
     const response = await fetch('http://localhost:3000/api/users')
     const data = await response.json()
-    return data
+
+    // Formatação de dados
+    const users = data.users.map((user: UserDataFetch) => {
+      return {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        created_at: new Date(user.createdAt).toLocaleDateString('pt-BR', {
+          day: '2-digit',
+          month: 'long',
+          year: 'numeric',
+        }),
+      }
+    })
+
+    return users
   })
 
   const isWideVersion = useBreakpointValue({
@@ -92,90 +121,36 @@ export default function UsersList() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  <Tr>
-                    <Td paddingX={['4', '4', '6']}>
-                      <Checkbox colorScheme="pink" />
-                    </Td>
-                    <Td>
-                      <Box>
-                        <Text fontWeight="bold">Hugo Alves Varella</Text>
-                        <Text fontSize="sm" color="gray.300">
-                          hugovarellaa@gmail.com
-                        </Text>
-                      </Box>
-                    </Td>
-                    {isWideVersion && <Td>31 de Janeiro, 2023</Td>}
-                    <Td>
-                      {isWideVersion && (
-                        <Button
-                          as="a"
-                          size="sm"
-                          fontSize="sm"
-                          colorScheme="purple"
-                          leftIcon={<Icon as={RiPencilLine} fontSize={16} />}
-                          cursor="pointer"
-                        >
-                          Editar
-                        </Button>
-                      )}
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td paddingX={['4', '4', '6']}>
-                      <Checkbox colorScheme="pink" />
-                    </Td>
-                    <Td>
-                      <Box>
-                        <Text fontWeight="bold">Hugo Alves Varella</Text>
-                        <Text fontSize="sm" color="gray.300">
-                          hugovarellaa@gmail.com
-                        </Text>
-                      </Box>
-                    </Td>
-                    {isWideVersion && <Td>31 de Janeiro, 2023</Td>}
-                    <Td>
-                      {isWideVersion && (
-                        <Button
-                          as="a"
-                          size="sm"
-                          fontSize="sm"
-                          colorScheme="purple"
-                          leftIcon={<Icon as={RiPencilLine} fontSize={16} />}
-                          cursor="pointer"
-                        >
-                          Editar
-                        </Button>
-                      )}
-                    </Td>
-                  </Tr>
-                  <Tr>
-                    <Td paddingX={['4', '4', '6']}>
-                      <Checkbox colorScheme="pink" />
-                    </Td>
-                    <Td>
-                      <Box>
-                        <Text fontWeight="bold">Hugo Alves Varella</Text>
-                        <Text fontSize="sm" color="gray.300">
-                          hugovarellaa@gmail.com
-                        </Text>
-                      </Box>
-                    </Td>
-                    {isWideVersion && <Td>31 de Janeiro, 2023</Td>}
-                    <Td>
-                      {isWideVersion && (
-                        <Button
-                          as="a"
-                          size="sm"
-                          fontSize="sm"
-                          colorScheme="purple"
-                          leftIcon={<Icon as={RiPencilLine} fontSize={16} />}
-                          cursor="pointer"
-                        >
-                          Editar
-                        </Button>
-                      )}
-                    </Td>
-                  </Tr>
+                  {data.map((user: User) => (
+                    <Tr key={user.id}>
+                      <Td paddingX={['4', '4', '6']}>
+                        <Checkbox colorScheme="pink" />
+                      </Td>
+                      <Td>
+                        <Box>
+                          <Text fontWeight="bold">{user.name}</Text>
+                          <Text fontSize="sm" color="gray.300">
+                            {user.email}
+                          </Text>
+                        </Box>
+                      </Td>
+                      {isWideVersion && <Td>{user.created_at}</Td>}
+                      <Td>
+                        {isWideVersion && (
+                          <Button
+                            as="a"
+                            size="sm"
+                            fontSize="sm"
+                            colorScheme="purple"
+                            leftIcon={<Icon as={RiPencilLine} fontSize={16} />}
+                            cursor="pointer"
+                          >
+                            Editar
+                          </Button>
+                        )}
+                      </Td>
+                    </Tr>
+                  ))}
                 </Tbody>
               </Table>
               <Pagination />
