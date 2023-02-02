@@ -1,6 +1,7 @@
 import { Header } from '@/src/components/Header'
 import { Pagination } from '@/src/components/Pagination'
 import { Sidebar } from '@/src/components/Sidebar'
+import { api } from '@/src/services/axios'
 import {
   Box,
   Button,
@@ -41,8 +42,7 @@ export default function UsersList() {
   const { data, isLoading, error, isFetching } = useQuery(
     'users',
     async () => {
-      const response = await fetch('http://localhost:3000/api/users')
-      const data = await response.json()
+      const { data } = await api.get('users')
 
       // Formatação de dados
       const users = data.users.map((user: UserDataFetch) => {
