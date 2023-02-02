@@ -7,7 +7,7 @@ export default function Home() {
         <title>Create Next App</title>
       </Head>
       <main>
-        <h1>Testando</h1>
+        <h1 className="">Testando</h1>
       </main>
     </>
   )
