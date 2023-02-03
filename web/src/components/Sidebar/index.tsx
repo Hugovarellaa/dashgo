@@ -1,3 +1,4 @@
+import { useSidebarDrawer } from '@/src/context/SidebarDrawerContext'
 import {
   Box,
   Drawer,
@@ -11,6 +12,8 @@ import {
 import { SidebarNav } from './SidebarNav'
 
 export function Sidebar() {
+  const { disclosure } = useSidebarDrawer()
+
   const isDrawerSidebar = useBreakpointValue({
     base: true,
     lg: false,
@@ -18,7 +21,11 @@ export function Sidebar() {
 
   if (isDrawerSidebar) {
     return (
-      <Drawer isOpen={true} placement="left" onClose={() => {}}>
+      <Drawer
+        isOpen={disclosure.isOpen}
+        placement="left"
+        onClose={disclosure.onClose}
+      >
         <DrawerOverlay>
           <DrawerContent backgroundColor="gray.900" padding="8">
             <DrawerCloseButton marginTop="6" />
