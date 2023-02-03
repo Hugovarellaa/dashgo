@@ -1,12 +1,6 @@
-import {
-  Button,
-  Flex,
-  FormControl,
-  FormLabel,
-  Input,
-  VStack,
-} from '@chakra-ui/react'
+import { Button, Flex, VStack } from '@chakra-ui/react'
 import Head from 'next/head'
+import { Input } from '../components/form/Input'
 
 export default function Home() {
   return (
@@ -30,37 +24,18 @@ export default function Home() {
           borderRadius={8}
         >
           <VStack spacing="4">
-            <FormControl>
-              <FormLabel htmlFor="email">Digite seu E-mail</FormLabel>
-              <Input
-                name="email"
-                id="email"
-                type="email"
-                focusBorderColor="pink.500"
-                backgroundColor="gray.900"
-                variant="filled"
-                size="lg"
-                _hover={{
-                  backgroundColor: 'gray.900',
-                }}
-              />
-            </FormControl>
-
-            <FormControl>
-              <FormLabel htmlFor="password">Digite sua senha</FormLabel>
-              <Input
-                name="password"
-                id="password"
-                type="password"
-                focusBorderColor="pink.500"
-                backgroundColor="gray.900"
-                variant="filled"
-                size="lg"
-                _hover={{
-                  backgroundColor: 'gray.900',
-                }}
-              />
-            </FormControl>
+            <Input
+              name="email"
+              id="email"
+              type="email"
+              label="Digite seu E-mail"
+            />
+            <Input
+              name="password"
+              id="password"
+              type="password"
+              label="Digite sua Senha"
+            />
           </VStack>
           <Button type="submit" marginTop="6" colorScheme="pink">
             Entrar
