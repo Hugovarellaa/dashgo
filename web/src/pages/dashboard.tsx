@@ -23,7 +23,7 @@ export default function Dashboard() {
           alignItems="flex-start"
         >
           <Box
-            padding="8"
+            padding={['6', '8']}
             backgroundColor="gray.800"
             borderRadius={8}
             paddingBottom="4"
@@ -31,11 +31,10 @@ export default function Dashboard() {
             <Text fontSize="lg" marginBottom="4">
               Inscrito da semana
             </Text>
-            {/* <Graph /> */}
           </Box>
 
           <Box
-            padding="8"
+            padding={['6', '8']}
             backgroundColor="gray.800"
             borderRadius={8}
             paddingBottom="4"
@@ -43,7 +42,6 @@ export default function Dashboard() {
             <Text fontSize="lg" marginBottom="4">
               Taxa de Abertura
             </Text>
-            {/* <Graph /> */}
           </Box>
         </SimpleGrid>
       </Flex>
