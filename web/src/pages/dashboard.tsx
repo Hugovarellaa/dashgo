@@ -1,5 +1,4 @@
 import { Box, Flex, SimpleGrid, Text } from '@chakra-ui/react'
-import { ApexGraph } from '../components/ApexGraph'
 import { Header } from '../components/Header'
 import { Sidebar } from '../components/Sidebar'
 
@@ -32,7 +31,7 @@ export default function Dashboard() {
             <Text fontSize="lg" marginBottom="4">
               Inscrito da semana
             </Text>
-            <ApexGraph />
+            {/* <Graph /> */}
           </Box>
 
           <Box
@@ -44,7 +43,7 @@ export default function Dashboard() {
             <Text fontSize="lg" marginBottom="4">
               Taxa de Abertura
             </Text>
-            <ApexGraph />
+            {/* <Graph /> */}
           </Box>
         </SimpleGrid>
       </Flex>
