@@ -1,8 +1,36 @@
 import { Button, Flex, VStack } from '@chakra-ui/react'
+import { yupResolver } from '@hookform/resolvers/yup'
 import Head from 'next/head'
+import { useForm } from 'react-hook-form'
+import * as yup from 'yup'
 import { Input } from '../components/form/Input'
 
+const schema = yup
+  .object({
+    email: yup
+      .string()
+      .email('Digite um email valido')
+      .required('E-mail e obrigatório'),
+    password: yup.string().min(6, 'A senha precisa ter no mínimo 6 caracteres'),
+  })
+  .required()
+
+type FormData = {
+  email: string
+  password: string
+}
+
 export default function Home() {
+  const { handleSubmit, register, formState } = useForm<FormData>({
+    resolver: yupResolver(schema),
+  })
+  const { isSubmitting, errors } = formState
+
+  async function handleSignIn(data: FormData) {
+    // return new Promise((resolve) => setTimeout(resolve, 2000))
+    console.log(data)
+  }
+
   return (
     <>
       <Head>
@@ -22,22 +50,31 @@ export default function Home() {
           padding="8"
           borderRadius={8}
           flexDirection="column"
+          onSubmit={handleSubmit(handleSignIn)}
         >
           <VStack spacing="4">
             <Input
-              name="email"
               id="email"
               type="email"
               label="Digite seu E-mail"
+              {...register('email')}
+              error={errors.email}
             />
             <Input
-              name="password"
               id="password"
               type="password"
               label="Digite sua senha"
+              {...register('password')}
+              error={errors.password}
             />
           </VStack>
-          <Button type="submit" marginTop="6" colorScheme="pink">
+          <Button
+            type="submit"
+            marginTop="6"
+            colorScheme="pink"
+            isLoading={isSubmitting}
+            disabled={isSubmitting}
+          >
             Entrar
           </Button>
         </Flex>
