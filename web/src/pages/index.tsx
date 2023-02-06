@@ -5,8 +5,8 @@ import {
   FormLabel,
   Input,
   Stack,
-} from "@chakra-ui/react";
-import Head from "next/head";
+} from '@chakra-ui/react'
+import Head from 'next/head'
 
 export default function Home() {
   return (
@@ -41,7 +41,7 @@ export default function Home() {
                 backgroundColor="gray.900"
                 variant="filled"
                 _hover={{
-                  backgroundColor: "gray.900",
+                  backgroundColor: 'gray.900',
                 }}
               />
             </FormControl>
@@ -55,7 +55,7 @@ export default function Home() {
                 backgroundColor="gray.900"
                 variant="filled"
                 _hover={{
-                  backgroundColor: "gray.900",
+                  backgroundColor: 'gray.900',
                 }}
               />
             </FormControl>
@@ -67,5 +67,5 @@ export default function Home() {
         </Flex>
       </Flex>
     </>
-  );
+  )
 }
