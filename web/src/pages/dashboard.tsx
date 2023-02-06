@@ -1,5 +1,6 @@
 import { Box, Flex, SimpleGrid, Text } from '@chakra-ui/react'
 import Head from 'next/head'
+import { Graph } from '../components/Graph'
 import { Header } from '../components/Header'
 import { Sidebar } from '../components/Sidebar'
 
@@ -36,6 +37,7 @@ export default function Dashboard() {
               >
                 Box 1
               </Text>
+              <Graph />
             </Box>
             <Box padding="8" backgroundColor="gray.800" borderRadius={8}>
               <Text
@@ -46,6 +48,7 @@ export default function Dashboard() {
               >
                 Box 2
               </Text>
+              <Graph />
             </Box>
           </SimpleGrid>
         </Flex>
