@@ -27,7 +27,7 @@ export function Header() {
         <IconButton
           aria-label="Open Navigation"
           icon={<Icon as={RiMenuLine} />}
-          fontSize="24"
+          fontSize="32"
           variant="unstyled"
           onClick={onOpen}
           marginRight="2"
