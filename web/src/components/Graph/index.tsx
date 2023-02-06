@@ -1,5 +1,6 @@
 import { theme } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
+import { useEffect, useState } from 'react'
 
 // lazy loading
 const Chart = dynamic(() => import('react-apexcharts'), {
@@ -61,13 +62,20 @@ const series = [
 ]
 
 export function Graph() {
+  const [assembleGraphics, setAssembleGraphics] = useState(false)
+
+  useEffect(() => {
+    setAssembleGraphics(true)
+  }, [])
   return (
-    <Chart
-      options={options}
-      series={series}
-      type="area"
-      height={160}
-      width="100%"
-    />
+    assembleGraphics && (
+      <Chart
+        options={options}
+        series={series}
+        type="area"
+        height={160}
+        width="100%"
+      />
+    )
   )
 }
