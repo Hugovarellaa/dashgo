@@ -40,6 +40,7 @@ export default function Home() {
                 focusBorderColor="purple.500"
                 backgroundColor="gray.900"
                 variant="filled"
+                size="lg"
                 _hover={{
                   backgroundColor: 'gray.900',
                 }}
@@ -54,6 +55,7 @@ export default function Home() {
                 focusBorderColor="purple.500"
                 backgroundColor="gray.900"
                 variant="filled"
+                size="lg"
                 _hover={{
                   backgroundColor: 'gray.900',
                 }}
@@ -61,7 +63,7 @@ export default function Home() {
             </FormControl>
           </Stack>
 
-          <Button type="submit" marginTop="6" colorScheme="purple">
+          <Button type="submit" marginTop="6" colorScheme="purple" size="lg">
             Entrar
           </Button>
         </Flex>
