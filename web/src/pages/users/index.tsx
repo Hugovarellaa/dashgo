@@ -1,4 +1,5 @@
 import { Header } from '@/src/components/Header'
+import { Pagination } from '@/src/components/pagination'
 import { Sidebar } from '@/src/components/Sidebar'
 import {
   Box,
@@ -43,7 +44,7 @@ export default function UserList() {
 
             <Button
               leftIcon={<Icon as={RiAddLine} fontSize="20" />}
-              colorScheme="green"
+              colorScheme="pink"
               as="a"
               fontSize="sm"
               cursor="pointer"
@@ -80,7 +81,7 @@ export default function UserList() {
                 <Td>
                   <Button
                     leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
-                    colorScheme="yellow"
+                    colorScheme="purple"
                     as="a"
                     fontSize="sm"
                     cursor="pointer"
@@ -106,7 +107,7 @@ export default function UserList() {
                 <Td>
                   <Button
                     leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
-                    colorScheme="yellow"
+                    colorScheme="purple"
                     as="a"
                     fontSize="sm"
                     cursor="pointer"
@@ -132,7 +133,7 @@ export default function UserList() {
                 <Td>
                   <Button
                     leftIcon={<Icon as={RiPencilLine} fontSize="16" />}
-                    colorScheme="yellow"
+                    colorScheme="purple"
                     as="a"
                     fontSize="sm"
                     cursor="pointer"
@@ -143,6 +144,7 @@ export default function UserList() {
               </Tr>
             </Tbody>
           </Table>
+          <Pagination />
         </Box>
       </Flex>
     </Box>
