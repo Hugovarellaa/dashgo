@@ -24,7 +24,7 @@ export default function Home() {
           borderRadius={8}
           flexDirection="column"
         >
-          <Stack>
+          <Stack spacing="6">
             <Input name="email" type="email" label="Digite seu E-mail" />
             <Input name="password" type="password" label="Digite sua Senha" />
           </Stack>
