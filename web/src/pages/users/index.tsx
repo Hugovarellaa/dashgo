@@ -62,7 +62,7 @@ export default function UserList() {
                   Usuários
                 </Heading>
 
-                <Link href="/users/create">
+                <Link href="/users/create" legacyBehavior>
                   <Button
                     leftIcon={<Icon as={RiAddLine} fontSize="20" />}
                     colorScheme="pink"
