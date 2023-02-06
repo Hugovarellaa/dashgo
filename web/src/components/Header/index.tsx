@@ -21,7 +21,8 @@ export function Header() {
       alignItems="center"
     >
       <Logo />
-      <SearchBox />
+      {isWideVersion && <SearchBox />}
+
       <Flex alignItems="center" marginLeft="auto">
         <Notification />
         <Profile showProfileData={isWideVersion} />
