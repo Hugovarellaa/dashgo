@@ -5,6 +5,7 @@ import Head from 'next/head'
 import { useForm } from 'react-hook-form'
 import * as zod from 'zod'
 import { Input } from '../components/form/Input'
+import { useAuth } from '../context/AuthContext'
 
 const schema = zod.object({
   email: zod.string().email('Digite um email valido'),
@@ -14,15 +15,17 @@ const schema = zod.object({
 type formData = zod.infer<typeof schema>
 
 export default function Home() {
+  const { signIn } = useAuth()
+
   const { register, handleSubmit, formState } = useForm<formData>({
     resolver: zodResolver(schema),
   })
 
   const { isSubmitting, errors } = formState
 
-  async function handleSignIn(data: formData) {
+  async function handleSignIn({ email, password }: formData) {
     // return new Promise((resolve) => setTimeout(resolve, 3000))
-    console.log(data)
+    await signIn({ email, password })
   }
 
   return (
