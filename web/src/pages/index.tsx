@@ -1,7 +1,9 @@
 /* eslint-disable no-new */
 import { Button, Flex, Stack } from '@chakra-ui/react'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { GetServerSideProps } from 'next'
 import Head from 'next/head'
+import { parseCookies } from 'nookies'
 import { useForm } from 'react-hook-form'
 import * as zod from 'zod'
 import { Input } from '../components/form/Input'
@@ -81,4 +83,21 @@ export default function Home() {
       </Flex>
     </>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const cookies = parseCookies(ctx)
+
+  if (cookies['nextauth.token']) {
+    return {
+      redirect: {
+        destination: '/dashboard',
+        permanent: false,
+      },
+    }
+  }
+
+  return {
+    props: {},
+  }
 }
