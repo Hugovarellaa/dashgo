@@ -1,12 +1,12 @@
 import axios, { AxiosError } from 'axios'
 import { parseCookies, setCookie } from 'nookies'
+import { useAuth } from '../context/AuthContext'
 
 interface AxiosErrorResponse {
   code?: string
 }
 
 let cookies = parseCookies()
-
 let isRefreshing = false
 let failedRequestQueue = []
 
@@ -82,7 +82,10 @@ api.interceptors.response.use(
         })
       } else {
         // desconectar usuário
+        const { singOut } = useAuth()
+        singOut()
       }
     }
+    return Promise.reject(error)
   },
 )
