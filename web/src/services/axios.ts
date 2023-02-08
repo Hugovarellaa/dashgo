@@ -1,6 +1,7 @@
 import axios, { AxiosError } from 'axios'
 import { parseCookies, setCookie } from 'nookies'
 import { singOut } from '../context/AuthContext'
+import { AuthTokenError } from '../errors/AuthTokenError'
 
 interface AxiosErrorResponse {
   code?: string
@@ -96,6 +97,8 @@ export function setupApiClient(ctx = undefined) {
 
           if (typeof window !== 'undefined') {
             singOut()
+          } else {
+            return Promise.reject(new AuthTokenError())
           }
         }
       }
