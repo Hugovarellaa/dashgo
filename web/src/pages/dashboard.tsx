@@ -3,6 +3,8 @@ import Head from 'next/head'
 import { Graph } from '../components/Graph'
 import { Header } from '../components/Header'
 import { Sidebar } from '../components/Sidebar'
+import { setupApiClient } from '../services/axios'
+import { withSSRAuth } from '../utils/withSSRAuth'
 
 export default function Dashboard() {
   return (
@@ -64,3 +66,13 @@ export default function Dashboard() {
     </>
   )
 }
+
+export const getServerSideProps = withSSRAuth(async (ctx) => {
+  const apiClient = setupApiClient(ctx)
+  const response = await apiClient.get('/me')
+
+  console.log(response.data)
+  return {
+    props: {},
+  }
+})

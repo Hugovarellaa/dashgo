@@ -7,7 +7,7 @@ import {
   useEffect,
   useState,
 } from 'react'
-import { api } from '../services/axios'
+import { api } from '../services/apiClient'
 
 type User = {
   email: string
@@ -33,15 +33,15 @@ interface AuthProviderProps {
 
 const AuthContext = createContext({} as AuthContextData)
 
+export function singOut() {
+  destroyCookie(undefined, 'nextauth.token')
+  destroyCookie(undefined, 'nextauth.refreshToken')
+  Router.push('/')
+}
+
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User>()
   const isAuthenticated = !!user
-
-  function singOut() {
-    destroyCookie(undefined, 'nextauth.token')
-    destroyCookie(undefined, 'nextauth.refreshToken')
-    Router.push('/')
-  }
 
   async function signIn({ email, password }: SignInCredential) {
     try {
